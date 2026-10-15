@@ -25,7 +25,7 @@
 .game-modal { position: fixed; inset: 0; z-index: 10000; display: flex; align-items: center; justify-content: center;
   background: rgba(5, 7, 14, .82); backdrop-filter: blur(6px); }
 .game-modal[hidden] { display: none; }
-.game-modal-box { display: flex; flex-direction: column; height: 92vh; aspect-ratio: 9 / 16; max-width: 96vw;
+.game-modal-box { display: flex; flex-direction: column; width: calc(var(--game-h) * 9 / 16 + 2px); max-width: 96vw;
   background: var(--surface); border: 1px solid var(--border); border-radius: 16px; overflow: hidden;
   box-shadow: 0 30px 80px -20px rgba(0, 0, 0, .8), 0 0 60px -20px rgba(34, 211, 238, .35); }
 .game-modal-bar { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 8px 10px 8px 16px;
@@ -34,9 +34,14 @@
 .game-modal-btn { width: 34px; height: 34px; display: inline-flex; align-items: center; justify-content: center;
   border: 1px solid var(--border-strong); border-radius: 999px; background: transparent; color: #fff; font-size: 20px; cursor: pointer; }
 .game-modal-btn:hover { border-color: var(--accent-2); color: var(--accent-2); }
-.game-modal iframe { flex: 1; width: 100%; border: 0; background: var(--bg); display: block; }
+/* The game area itself is exactly 9:16 (bar height = 51px), so the portrait game fills it edge to edge */
+.game-modal { --game-h: min(calc(92vh - 51px), calc(96vw * 16 / 9)); }
+.game-modal iframe { height: var(--game-h); width: 100%; flex: none;
+  border: 0; background: var(--bg); display: block; }
 body.game-open { overflow: hidden; }
 .game-modal-box:fullscreen { height: 100%; width: 100%; max-width: none; aspect-ratio: auto; border-radius: 0; border: 0; }
+.game-modal-box:fullscreen iframe { flex: 1; height: auto; width: 100%; max-width: none; aspect-ratio: auto; }
 @media (max-width: 600px), (max-height: 520px) {
   .game-modal-box { height: 100%; width: 100%; max-width: none; aspect-ratio: auto; border-radius: 0; border: 0; }
+  .game-modal iframe { flex: 1; height: auto; width: 100%; max-width: none; aspect-ratio: auto; }
 }
