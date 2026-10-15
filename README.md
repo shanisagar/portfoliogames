@@ -12,6 +12,7 @@ Unity games playable in the browser. Live at https://shanisagar.github.io/portfo
      `<style>html,body{height:100%;background:#0b0d17;overflow:hidden}@media (min-aspect-ratio: 9/16){#unity-container.unity-mobile{height:100%;width:auto;aspect-ratio:9/16;left:50%;transform:translateX(-50%)}}</style>`
 4. Put a 1024×500 feature graphic in `assets/img/games/` (StoreListing/<Game>/feature-graphic-1024x500.png).
 5. Add an entry at the top of `assets/js/games-data.js`.
-6. Push.
+6. If you changed assets/css or assets/js, bump the `?v=` number on those links in index.html so browsers load the new version.
+7. Push.
 
 Link straight to a game from anywhere with `?play=<id>`, e.g. https://shanisagar.github.io/portfoliogames/?play=elixirlab

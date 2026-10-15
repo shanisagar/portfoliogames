@@ -7,6 +7,17 @@
  */
 window.GAMES = [
   {
+    id: "prismblocks",
+    name: "Prism Blocks",
+    tagline: "Place. Clear. Combo.",
+    image: "assets/img/games/PrismBlocks.png",
+    genre: "Puzzle",
+    description:
+      "Block-placing puzzle with gem-like neon blocks. Drag pieces from the tray onto an 8x8 board and complete rows or columns to shatter them. Clearing on consecutive turns builds a combo streak that multiplies your points, and emptying the whole board earns a big bonus. Trays are dealt fairly so at least one piece always fits, and they get tougher as the score climbs.",
+    tags: ["Unity", "C#", "Puzzle", "Combo Scoring"],
+    apk: null
+  },
+  {
     id: "neuralsiege",
     name: "Neural Siege",
     tagline: "Outthink the machine.",
