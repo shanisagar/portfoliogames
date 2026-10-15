@@ -7,6 +7,17 @@
  */
 window.GAMES = [
   {
+    id: "untwine",
+    name: "Untwine",
+    tagline: "Turn. Unlink. Set them free.",
+    image: "assets/img/games/Untwine.png",
+    genre: "Puzzle",
+    description:
+      "Ring-rotation puzzle on a hexagonal lattice: tap a ring to turn it 60° and open its links to the neighbours. A ring with every link open slips free and flies away, which can free its neighbours in a chain reaction. Gold couplers turn two rings together and padlocked rings never turn. Clear the knot within the move limit, and beat par for three stars.",
+    tags: ["Unity", "C#", "Puzzle", "Hex Grid"],
+    apk: null
+  },
+  {
     id: "prismblocks",
     name: "Prism Blocks",
     tagline: "Place. Clear. Combo.",
