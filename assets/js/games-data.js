@@ -7,6 +7,18 @@
  */
 window.GAMES = [
   {
+    id: "voltrace",
+    name: "Voltrace",
+    tagline: "Anti-gravity racing vs AI rivals.",
+    image: "assets/img/games/Voltrace.png",
+    genre: "Racing",
+    description:
+      "Top-down anti-gravity racer against five AI pilots on neon circuits generated fresh from Catmull-Rom splines and checked so they never overlap themselves. Each pilot has its own skill, aggression and drafting habits, plans speed from the curves ahead and picks a side to overtake. Drift, boost pads, slipstream and league progression round it out.",
+    tags: ["Unity", "C#", "Racing AI", "Procedural Tracks"],
+    apk: "https://shanisagar.github.io/portfolio/assets/apk/Voltrace.apk",
+    apkSize: "40 MB"
+  },
+  {
     id: "untwine",
     name: "Untwine",
     tagline: "Turn. Unlink. Set them free.",
