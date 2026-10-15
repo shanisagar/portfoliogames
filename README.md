@@ -1,6 +1,6 @@
 # Games by Shani Sagar
 
-Unity games playable in the browser. Live at https://shanisagar.github.io/gamePortfolio/
+Unity games playable in the browser. Live at https://shanisagar.github.io/portfoliogames/
 
 ## Add a new game
 1. Build it in Unity for **Web** with Compression Format **Gzip** and **Decompression Fallback** ticked
@@ -14,4 +14,4 @@ Unity games playable in the browser. Live at https://shanisagar.github.io/gamePo
 5. Add an entry at the top of `assets/js/games-data.js`.
 6. Push.
 
-Link straight to a game from anywhere with `?play=<id>`, e.g. https://shanisagar.github.io/gamePortfolio/?play=elixirlab
+Link straight to a game from anywhere with `?play=<id>`, e.g. https://shanisagar.github.io/portfoliogames/?play=elixirlab
