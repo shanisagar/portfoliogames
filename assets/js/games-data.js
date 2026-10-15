@@ -7,6 +7,17 @@
  */
 window.GAMES = [
   {
+    id: "neuralsiege",
+    name: "Neural Siege",
+    tagline: "Outthink the machine.",
+    image: "assets/img/games/NeuralSiege.png",
+    genre: "Strategy",
+    description:
+      "Strategy board game against NEXUS, a search-based AI. Clone a node into an adjacent cell or jump it two cells, and every enemy node touching where you land converts to your side. NEXUS searches your replies with alpha-beta pruning that goes deeper every tier, comments on the game, and can be borrowed for three hints per match. Beat it to climb ten tiers.",
+    tags: ["Unity", "C#", "Game AI", "Alpha-Beta Search"],
+    apk: null
+  },
+  {
     id: "elixirlab",                       // folder name inside games/
     name: "Elixir Lab",
     tagline: "Pour. Sort. Brew.",
