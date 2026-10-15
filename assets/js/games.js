@@ -103,6 +103,20 @@
   modal.addEventListener("click", (e) => { if (e.target === modal) closeGame(); });
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeGame(); });
 
+  /* ---------- Optional AdSense display banner (outside the games) ---------- */
+  const bannerCfg = (window.NEON_WEB_ADS || {}).banner || {};
+  const bannerEl = $("#ad-banner");
+  if (bannerEl && bannerCfg.slot && bannerCfg.client && bannerCfg.client.indexOf("XXXX") < 0) {
+    bannerEl.hidden = false;
+    bannerEl.innerHTML = '<span class="ad-label">Advertisement</span><ins class="adsbygoogle" style="display:block" data-ad-client="' +
+      esc(bannerCfg.client) + '" data-ad-slot="' + esc(bannerCfg.slot) + '" data-ad-format="auto" data-full-width-responsive="true"></ins>';
+    const s = document.createElement("script");
+    s.async = true; s.crossOrigin = "anonymous";
+    s.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=" + encodeURIComponent(bannerCfg.client);
+    document.head.appendChild(s);
+    (window.adsbygoogle = window.adsbygoogle || []).push({});
+  }
+
   /* ---------- Deep link from the main portfolio: ?play=<id> ---------- */
   const wanted = new URLSearchParams(location.search).get("play");
   if (wanted) {
