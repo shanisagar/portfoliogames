@@ -7,6 +7,18 @@
  */
 window.GAMES = [
   {
+    id: "lumiloop",
+    name: "Lumiloop",
+    tagline: "Draw loops. Capture light.",
+    image: "assets/img/games/Lumiloop.png",
+    genre: "Arcade",
+    description:
+      "Arcade game about drawing with light: cross your comet's glowing trail to close a loop and capture everything inside, while dodging hunters and cutters and chaining combos. Loop detection uses real-time geometry, all sprites are generated from signed-distance functions, and every sound, including a two-layer adaptive soundtrack, is synthesized in code with no audio files.",
+    tags: ["Unity", "C#", "Procedural Audio", "SDF Graphics"],
+    apk: "https://shanisagar.github.io/portfolio/assets/apk/Lumiloop.apk",
+    apkSize: "40 MB"
+  },
+  {
     id: "voltrace",
     name: "Voltrace",
     tagline: "Anti-gravity racing vs AI rivals.",
