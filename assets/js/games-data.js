@@ -7,6 +7,28 @@
  */
 window.GAMES = [
   {
+    id: "candynova",
+    name: "Candy Nova",
+    tagline: "Swap. Match. Go supernova.",
+    image: "assets/img/games/CandyNova.png",
+    genre: "Puzzle",
+    description:
+      "Match-3 candy puzzle in a sweet candy land: swap neighbouring candies to match three or more. Match four for a striped laser candy, an L or T shape for a wrapped bomb and five in a row for a chocolate Nova bomb that zaps every candy of one colour, and swap two specials together for board-wide combos. Levels set goals such as gold jelly to clear and frost blocks to break within a move limit, with jelly-wobble landings, chain cascades and sprinkle bursts throughout.",
+    tags: ["Unity", "C#", "Match-3", "Cascade Engine"],
+    apk: null
+  },
+  {
+    id: "ghostline",
+    name: "Ghostline",
+    tagline: "Infiltrate. Steal the data. Stay unseen.",
+    image: "assets/img/games/Ghostline.png",
+    genre: "Stealth",
+    description:
+      "Top-down stealth through procedurally generated facilities: steal three data shards and reach the exit without being caught. Guards follow A* patrol routes, see in vision cones clipped by walls with a detection meter that fills faster up close, hear sprinting and thrown decoys, radio nearby guards and search around your last known position, while a facility-wide alert level sharpens every guard. Sprint, throw decoys and cloak, and finish unseen for a ghost bonus.",
+    tags: ["Unity", "C#", "Stealth AI", "Procedural Levels"],
+    apk: null
+  },
+  {
     id: "wordwonder",
     name: "Word Wonder",
     tagline: "Connect letters. Unlock the Wonders.",
