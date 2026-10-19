@@ -7,6 +7,17 @@
  */
 window.GAMES = [
   {
+    id: "wordwonder",
+    name: "Word Wonder",
+    tagline: "Connect letters. Unlock the Wonders.",
+    image: "assets/img/games/WordWonder.png",
+    genre: "Word",
+    description:
+      "Crossword and word-wheel puzzle: drag across the letters on the wheel to spell words and fill every slot in the crossword grid. Extra valid words count as bonus words and earn gems, which buy a hint or a hammer to reveal any tile, and finding words without a miss builds a gem-multiplying streak. Each crossword is generated from curated word stems so the wheel always has plenty of intersecting words, as you travel through World Wonders from the Great Pyramid to Chichen Itza.",
+    tags: ["Unity", "C#", "Word Puzzle", "Crossword Generation"],
+    apk: null
+  },
+  {
     id: "ludoblitz",
     name: "Ludo Blitz",
     tagline: "Roll. Race. Capture.",
