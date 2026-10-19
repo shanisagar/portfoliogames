@@ -9,11 +9,18 @@
   const esc = (s) => String(s == null ? "" : s).replace(/[&<>"']/g, (c) =>
     ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
-  grid.innerHTML = games.map((g, i) => `
-    <div class="col-lg-4 col-md-6 portfolio-item" data-aos="fade-up" data-aos-delay="${(i % 3) * 80}">
+  const rank = window.GameRanking || null;
+  let firstRender = true;
+
+  function cardHtml(g, i, badge) {
+    const played = rank ? rank.playedLine(g.id) : "";
+    const aos = firstRender ? ` data-aos="fade-up" data-aos-delay="${(i % 3) * 80}"` : "";
+    return `
+    <div class="col-lg-4 col-md-6 portfolio-item"${aos}>
       <article class="project" id="game-${esc(g.id)}">
         <div class="project-img">
           <img src="${esc(g.image)}" alt="${esc(g.name)} feature graphic" loading="lazy">
+          ${badge ? `<span class="game-badge game-badge-${esc(badge.kind)}">${esc(badge.text)}</span>` : ""}
           <div class="project-actions">
             <a href="${esc(g.image)}" data-gallery="games" class="portfolio-lightbox" title="${esc(g.name)} — ${esc(g.tagline)}" aria-label="Enlarge"><i class="bx bx-expand"></i></a>
             <a href="games/${esc(g.id)}/" class="js-play" data-game="${esc(g.id)}" aria-label="Play ${esc(g.name)}"><i class="bx bx-play"></i></a>
@@ -22,6 +29,7 @@
         <div class="project-body">
           <span class="project-org">${esc(g.genre || "Game")} · ${esc(g.tagline)}</span>
           <h3>${esc(g.name)}</h3>
+          ${played ? `<span class="game-played"><i class="bx bx-time-five"></i> ${esc(played)}</span>` : ""}
           <p>${esc(g.description)}</p>
           <div class="tags">${(g.tags || []).map((t) => `<span>${esc(t)}</span>`).join("")}</div>
           <div class="game-buttons">
@@ -30,7 +38,45 @@
           </div>
         </div>
       </article>
-    </div>`).join("");
+    </div>`;
+  }
+
+  /* ---------- Sort bar: For you / Newest / Most played ---------- */
+  let sortBar = null;
+  if (rank) {
+    sortBar = document.createElement("div");
+    sortBar.className = "games-sort";
+    sortBar.innerHTML =
+      '<div class="games-sort-buttons" role="group" aria-label="Sort games">' +
+      '<button type="button" data-sort="foryou"><i class="bx bx-heart"></i> For you</button>' +
+      '<button type="button" data-sort="newest"><i class="bx bx-star"></i> Newest</button>' +
+      '<button type="button" data-sort="mostplayed"><i class="bx bx-time-five"></i> Most played</button>' +
+      '</div><span class="games-sort-note"></span>' +
+      '<button type="button" class="games-sort-reset" hidden>Clear my play history</button>';
+    grid.parentNode.insertBefore(sortBar, grid);
+    sortBar.addEventListener("click", (e) => {
+      const b = e.target.closest("button");
+      if (!b) return;
+      if (b.classList.contains("games-sort-reset")) rank.reset();
+      else rank.setMode(b.dataset.sort);
+      render();
+    });
+  }
+
+  function render() {
+    const mode = rank ? rank.getMode() : "newest";
+    const result = rank ? rank.order(games, mode) : { list: games, badges: {}, hasHistory: false };
+    grid.innerHTML = result.list.map((g, i) => cardHtml(g, i, result.badges[g.id])).join("");
+    if (sortBar) {
+      sortBar.querySelectorAll("[data-sort]").forEach((b) => b.classList.toggle("active", b.dataset.sort === mode));
+      sortBar.querySelector(".games-sort-note").textContent =
+        mode === "foryou" ? (result.hasHistory ? "Sorted by what you play most" : "Play a game and this list learns what you like") : "";
+      sortBar.querySelector(".games-sort-reset").hidden = !result.hasHistory;
+    }
+    if (!firstRender && window.GLightbox) GLightbox({ selector: ".portfolio-lightbox" });
+    firstRender = false;
+  }
+  render();
 
   const countEl = $("#game-count");
   if (countEl) countEl.textContent = games.length;
@@ -76,12 +122,14 @@
     document.body.classList.add("game-open");
     frame.addEventListener("load", () => { try { frame.focus(); } catch (e) {} }, { once: true });
     history.replaceState(null, "", "?play=" + encodeURIComponent(g.id)); // shareable link to this game
+    if (rank) rank.start(g.id);
   }
 
   function closeGame() {
     if (modal.hidden) return;
     if (document.fullscreenElement) document.exitFullscreen();
     frame.src = "about:blank"; // stops the game and its sound
+    if (rank) { rank.stop(); render(); } // re-order now that we know more about what this visitor likes
     modal.hidden = true;
     document.body.classList.remove("game-open");
     history.replaceState(null, "", location.pathname + "#games");

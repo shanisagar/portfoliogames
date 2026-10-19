@@ -50,3 +50,21 @@ body.game-open { overflow: hidden; }
 .ad-banner { margin: 0 0 28px; padding: 10px; text-align: center; border: 1px dashed var(--border); border-radius: 12px; min-height: 100px; }
 .ad-banner[hidden] { display: none; }
 .ad-label { display: block; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px; }
+
+/* ---------- Personal ordering (game-ranking.js) ---------- */
+.games-sort { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin: 0 0 22px; }
+.games-sort-buttons { display: inline-flex; gap: 6px; padding: 4px; border: 1px solid var(--border); border-radius: 999px; background: var(--surface); }
+.games-sort-buttons button { border: 0; background: transparent; color: var(--text-muted); font: 600 14px var(--font-body); padding: 7px 14px; border-radius: 999px; display: inline-flex; align-items: center; gap: 6px; cursor: pointer; transition: color .2s, background .2s; }
+.games-sort-buttons button:hover { color: var(--text); }
+.games-sort-buttons button.active { background: var(--gradient); color: #fff; }
+.games-sort-note { color: var(--text-muted); font-size: 13px; }
+.games-sort-reset { margin-left: auto; border: 0; background: none; color: var(--text-muted); font-size: 13px; text-decoration: underline; cursor: pointer; padding: 0; }
+.games-sort-reset:hover { color: var(--text); }
+.project-img { position: relative; }
+.game-badge { position: absolute; top: 12px; left: 12px; z-index: 2; padding: 5px 11px; border-radius: 999px; font: 700 12px var(--font-body); letter-spacing: .02em; color: #fff; background: rgba(11, 13, 23, .78); border: 1px solid var(--border-strong); backdrop-filter: blur(6px); }
+.game-badge-continue { background: var(--gradient); border-color: transparent; }
+.game-badge-fav { background: #f59e0b; border-color: transparent; color: #1b1300; }
+.game-badge-pick { border-color: var(--accent-2); color: var(--accent-2); }
+.game-badge-new { border-color: var(--ok); color: var(--ok); }
+.game-played { display: inline-flex; align-items: center; gap: 5px; margin: -4px 0 8px; color: var(--accent-2); font-size: 13px; font-weight: 600; }
+@media (max-width: 575px) { .games-sort-reset { margin-left: 0; } }
