@@ -7,6 +7,17 @@
  */
 window.GAMES = [
   {
+    id: "ludoblitz",
+    name: "Ludo Blitz",
+    tagline: "Roll. Race. Capture.",
+    image: "assets/img/games/LudoBlitz.png",
+    genre: "Board",
+    description:
+      "Classic four-colour Ludo on a polished royal board against tactical AI rivals, or offline pass-and-play for 2, 3 or 4 people on one device. Rolling a six brings a token out and earns a bonus roll, captures send rivals home, and three sixes in a row forfeit the turn. The AI weighs safety, captures and race progress, rivals get tougher stage by stage, and the die and pawns are fully animated with confetti celebrations.",
+    tags: ["Unity", "C#", "Board Game AI", "Local Multiplayer"],
+    apk: null
+  },
+  {
     id: "lumiloop",
     name: "Lumiloop",
     tagline: "Draw loops. Capture light.",
