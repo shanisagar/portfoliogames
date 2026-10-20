@@ -7,6 +7,17 @@
  */
 window.GAMES = [
   {
+    id: "skyfire",
+    name: "Skyfire",
+    tagline: "Shoot. Dodge. Rule the skies.",
+    image: "assets/img/games/Skyfire.png",
+    genre: "Shooter",
+    description:
+      "WWII-style vertical plane shooter: drag to fly while your guns fire automatically. Enemy squadrons attack in wedges, side sweeps and lock-on dives while bombers fill the sky with bullet rings; down a whole red squadron to power up to five guns, and call in bombs and wingmen. Every mission ends with a three-phase Flying Fortress boss, and coins buy permanent hangar upgrades. Planes, terrain, explosions and sound are all generated in code.",
+    tags: ["Unity", "C#", "Shoot 'em up", "Bullet Patterns"],
+    apk: null
+  },
+  {
     id: "candynova",
     name: "Candy Nova",
     tagline: "Swap. Match. Go supernova.",
