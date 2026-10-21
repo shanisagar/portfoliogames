@@ -7,6 +7,28 @@
  */
 window.GAMES = [
   {
+    id: "swarmbreaker",
+    name: "Swarmbreaker",
+    tagline: "Outfight a hive mind that learns you.",
+    image: "assets/img/games/Swarmbreaker.png",
+    genre: "Shooter",
+    description:
+      "Twin-stick arena shooter against an adaptive hive mind. Drones flock and encircle you, flankers circle behind your aim and lunge, snipers lead their shots and wardens shield their allies, and every fifth wave a Hive core arrives. Between waves you pick an upgrade, and the hive picks a counter to how you played.",
+    tags: ["Unity", "C#", "Twin-Stick", "Adaptive AI"],
+    apk: null
+  },
+  {
+    id: "firewall",
+    name: "Firewall",
+    tagline: "Defend the core from a virus that learns.",
+    image: "assets/img/games/Firewall.png",
+    genre: "Strategy",
+    description:
+      "Tower defense against a learning virus hive: build Blaster, Pulse, Cryo and Rail towers to shape the maze and protect your data core. Viruses route with a weighted flow field, record where they take damage and reroute around your kill zones, and the hive brings viruses that resist whichever towers hurt it most. Endless waves with bigger bosses.",
+    tags: ["Unity", "C#", "Tower Defense", "Flow-Field AI"],
+    apk: null
+  },
+  {
     id: "bubblebloom",
     name: "Bubble Bloom",
     tagline: "Pop bubbles. Free the flowers.",
