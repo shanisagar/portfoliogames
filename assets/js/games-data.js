@@ -7,6 +7,94 @@
  */
 window.GAMES = [
   {
+    id: "fruitfusion",
+    name: "Fruit Fusion",
+    tagline: "Drop. Merge. Grow a watermelon!",
+    image: "assets/img/games/FruitFusion.png",
+    genre: "Puzzle",
+    description:
+      "Suika-style drop-and-merge puzzle: drop fruit into a glass jar and two of the same fruit merge into the next, bigger one, all the way from a cherry up to a watermelon. Fruit rolls, stacks and tumbles with custom circle physics, quick merges chain into combos, and POP and SHAKE boosters rescue a crowded jar. Eleven cute fruits, the jar and the kitchen are drawn entirely in code.",
+    tags: ["Unity", "C#", "Merge Puzzle", "Circle Physics"],
+    apk: null
+  },
+  {
+    id: "melodytiles",
+    name: "Melody Tiles",
+    tagline: "Tap the tiles. Play the song.",
+    image: "assets/img/games/MelodyTiles.png",
+    genre: "Rhythm",
+    description:
+      "Piano-tiles rhythm game: tap the falling black tiles in order and each one plays the next note of a famous public-domain melody, from Ode to Joy and Für Elise to the Hall of the Mountain King. Long tiles must be held, stars at every third of the song unlock new songs, and finished songs loop faster in Encore mode. Multi-touch input and a piano synthesized in code.",
+    tags: ["Unity", "C#", "Rhythm", "Synthesized Piano"],
+    apk: null
+  },
+  {
+    id: "tilegarden",
+    name: "Tile Garden",
+    tagline: "Match three. Clear the garden.",
+    image: "assets/img/games/TileGarden.png",
+    genre: "Puzzle",
+    description:
+      "Relaxing triple-tile matching: tiles are stacked in layers and only uncovered ones can be picked. Tapped tiles slide into a seven-slot tray and three of a kind clear away; fill the tray and the level is lost. Symmetric layered gardens grow with every level, with Undo, Magic and Shuffle boosters, star times and soft falling blossom.",
+    tags: ["Unity", "C#", "Triple Match", "Layered Boards"],
+    apk: null
+  },
+  {
+    id: "boltjam",
+    name: "Bolt Jam",
+    tagline: "Unscrew. Sort. Drop every plank.",
+    image: "assets/img/games/BoltJam.png",
+    genre: "Puzzle",
+    description:
+      "Screw-sorting puzzle on a workshop pegboard: wooden planks are screwed down in overlapping layers and a screw only comes out once no plank above covers it. Each screw flies to the paint tin of its colour, three per tin, or waits in a small holding tray. Planks held by one screw swing like pendulums and fall when the last one is gone; drop them all to win.",
+    tags: ["Unity", "C#", "Screw Puzzle", "Pendulum Physics"],
+    apk: null
+  },
+  {
+    id: "bladetoss",
+    name: "Blade Toss",
+    tagline: "Throw. Stick. Don't hit a blade.",
+    image: "assets/img/games/BladeToss.png",
+    genre: "Arcade",
+    description:
+      "Knife-throwing arcade game: tap to throw a knife into the spinning target and never touch a blade that is already stuck in it. Throw every knife to smash the target; spin patterns wobble, reverse and stop-and-go, and every fifth stage is a boss such as a cheese wheel, an old tire or a knight's shield. Slice apples on the rim for coins and unlock six knife skins.",
+    tags: ["Unity", "C#", "Timing", "Boss Patterns"],
+    apk: null
+  },
+  {
+    id: "sunnysolitaire",
+    name: "Sunny Solitaire",
+    tagline: "The classic card game, in the sun.",
+    image: "assets/img/games/SunnySolitaire.png",
+    genre: "Card",
+    description:
+      "Classic Klondike solitaire with a sunny look: tap a card to send it to the best place or drag a whole run anywhere it fits. Draw one or three, unlimited undo, hints, auto-finish once every card is face up and a bouncing-card victory. Cards are crisp UI elements that scale to any screen, in portrait or landscape.",
+    tags: ["Unity", "C#", "Klondike", "Drag & Drop UI"],
+    apk: null
+  },
+  {
+    id: "sudokuzen",
+    name: "Sudoku Zen",
+    tagline: "Breathe. Think. Fill the grid.",
+    image: "assets/img/games/SudokuZen.png",
+    genre: "Puzzle",
+    description:
+      "Calm classic Sudoku in four difficulties, from Easy to Expert. Every puzzle is generated on the fly and checked by a backtracking solver to have exactly one solution. Pencil notes, undo, erase, hints, highlights for related cells and matching numbers, a three-mistake rule and completed-row animations, set on an ink-wash backdrop.",
+    tags: ["Unity", "C#", "Sudoku Generator", "Backtracking Solver"],
+    apk: null
+  },
+  {
+    id: "snakebrawl",
+    name: "Snake Brawl",
+    tagline: "Eat. Grow. Outsmart every snake.",
+    image: "assets/img/games/SnakeBrawl.png",
+    genre: "Arcade",
+    description:
+      "Snake.io-style arena battle against eleven AI snakes: steer with a floating joystick or the mouse, eat candy to grow and boost to cut in front of rivals. A snake whose head touches another snake is out and turns into a trail of candy. Bots hunt food, dodge bodies and chase the player; a leaderboard and minimap track the top snakes.",
+    tags: ["Unity", "C#", "Bot AI", "Spatial Hashing"],
+    apk: null
+  },
+  {
     id: "skyfire",
     name: "Skyfire",
     tagline: "Shoot. Dodge. Rule the skies.",
