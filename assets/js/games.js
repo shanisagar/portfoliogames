@@ -158,10 +158,13 @@
     bannerEl.hidden = false;
     bannerEl.innerHTML = '<span class="ad-label">Advertisement</span><ins class="adsbygoogle" style="display:block" data-ad-client="' +
       esc(bannerCfg.client) + '" data-ad-slot="' + esc(bannerCfg.slot) + '" data-ad-format="auto" data-full-width-responsive="true"></ins>';
-    const s = document.createElement("script");
-    s.async = true; s.crossOrigin = "anonymous";
-    s.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=" + encodeURIComponent(bannerCfg.client);
-    document.head.appendChild(s);
+    // The AdSense tag is already in <head> (site verification); only add it if a page lacks it.
+    if (!document.querySelector('script[src*="adsbygoogle.js"]')) {
+      const s = document.createElement("script");
+      s.async = true; s.crossOrigin = "anonymous";
+      s.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=" + encodeURIComponent(bannerCfg.client);
+      document.head.appendChild(s);
+    }
     (window.adsbygoogle = window.adsbygoogle || []).push({});
   }
 
