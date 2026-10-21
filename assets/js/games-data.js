@@ -7,6 +7,17 @@
  */
 window.GAMES = [
   {
+    id: "bubblebloom",
+    name: "Bubble Bloom",
+    tagline: "Pop bubbles. Free the flowers.",
+    image: "assets/img/games/BubbleBloom.png",
+    genre: "Puzzle",
+    description:
+      "Level-based bubble shooter in a sunny garden: drag to aim with a dotted line that shows every wall bounce, then let go to shoot. Three or more of a colour pop, and bubbles left hanging drop for bonus points. Each level hides flower buds near the top that you must free before your shots run out, with bomb and rainbow boosters, colour-blind-friendly symbols on every bubble and three-star ratings.",
+    tags: ["Unity", "C#", "Bubble Shooter", "Hex Grid"],
+    apk: null
+  },
+  {
     id: "skystack",
     name: "Sky Stack",
     tagline: "Stack the floors. Touch the stars.",
