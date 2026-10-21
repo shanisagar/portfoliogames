@@ -7,6 +7,17 @@
  */
 window.GAMES = [
   {
+    id: "skystack",
+    name: "Sky Stack",
+    tagline: "Stack the floors. Touch the stars.",
+    image: "assets/img/games/SkyStack.png",
+    genre: "Arcade",
+    description:
+      "One-tap tower stacker: a crane slides each new floor back and forth and you tap to drop it. Whatever hangs over the edge is sliced off and tumbles away, so the tower narrows unless you land perfect drops, and three perfects in a row widen it again. The sky changes as you climb from the city through the clouds and the sunset into space, and the crane speeds up the higher you build.",
+    tags: ["Unity", "C#", "One-Tap", "Timing"],
+    apk: null
+  },
+  {
     id: "fruitfusion",
     name: "Fruit Fusion",
     tagline: "Drop. Merge. Grow a watermelon!",
