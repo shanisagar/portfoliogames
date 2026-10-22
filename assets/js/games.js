@@ -124,10 +124,15 @@
   /* ---------- Game pop-up ---------- */
   const modal = $("#game-modal"), frame = $("#game-modal-frame"), title = $("#game-modal-title");
   let lastFocus = null;
+  let playedHere = false;
 
   function openGame(id) {
     const g = games.find((x) => x.id === id);
     if (!g) return;
+    // A closed Unity game doesn't hand all its memory back until the page itself is unloaded, and after a
+    // few games in one tab the next one could crash with "OOM". So the 2nd+ game reloads the page into it.
+    if (playedHere) { location.replace("?play=" + encodeURIComponent(g.id)); return; }
+    playedHere = true;
     lastFocus = document.activeElement;
     title.textContent = g.name;
     frame.title = g.name;
