@@ -55,16 +55,18 @@
       }
 
       var buildUrl = "Build";
+      var buildVersion = "1"; // bump when you push a new build of this game, so players get it
       var loaderUrl = buildUrl + "/LudoBlitz.loader.js";
       var config = {
         arguments: [],
-        dataUrl: buildUrl + "/LudoBlitz.data.unityweb",
-        frameworkUrl: buildUrl + "/LudoBlitz.framework.js.unityweb",
-        codeUrl: buildUrl + "/LudoBlitz.wasm.unityweb",
+        dataUrl: buildUrl + "/LudoBlitz.data.unityweb" + "?v=" + buildVersion,
+        frameworkUrl: buildUrl + "/LudoBlitz.framework.js.unityweb" + "?v=" + buildVersion,
+        codeUrl: buildUrl + "/LudoBlitz.wasm.unityweb" + "?v=" + buildVersion,
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "Ludo Blitz",
         productVersion: "0.1.0",
+        cacheControl: function () { return "immutable"; }, // repeat plays load from the browser cache with no network check
         showBanner: unityShowBanner,
         // errorHandler: function(err, url, line) {
         //    alert("error " + err + " occurred at line " + line);

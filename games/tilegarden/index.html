@@ -55,16 +55,18 @@
       }
 
       var buildUrl = "Build";
+      var buildVersion = "1"; // bump when you push a new build of this game, so players get it
       var loaderUrl = buildUrl + "/TileGarden.loader.js";
       var config = {
         arguments: [],
-        dataUrl: buildUrl + "/TileGarden.data.unityweb",
-        frameworkUrl: buildUrl + "/TileGarden.framework.js.unityweb",
-        codeUrl: buildUrl + "/TileGarden.wasm.unityweb",
+        dataUrl: buildUrl + "/TileGarden.data.unityweb" + "?v=" + buildVersion,
+        frameworkUrl: buildUrl + "/TileGarden.framework.js.unityweb" + "?v=" + buildVersion,
+        codeUrl: buildUrl + "/TileGarden.wasm.unityweb" + "?v=" + buildVersion,
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "Tile Garden",
         productVersion: "0.1.0",
+        cacheControl: function () { return "immutable"; }, // repeat plays load from the browser cache with no network check
         showBanner: unityShowBanner,
         // errorHandler: function(err, url, line) {
         //    alert("error " + err + " occurred at line " + line);
