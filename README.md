@@ -13,12 +13,24 @@ Unity games playable in the browser. Live at https://shanisagar.github.io/portfo
      `<script src="../../assets/js/web-ads.js?v=1"></script>`
    - and also add:
      `<style>html,body{height:100%;background:#0b0d17;overflow:hidden}@media (min-aspect-ratio: 9/16){#unity-container.unity-mobile{height:100%;width:auto;aspect-ratio:9/16;left:50%;transform:translateX(-50%)}}</style>`
-4. Put a 1024×500 feature graphic in `assets/img/games/` (StoreListing/<Game>/feature-graphic-1024x500.png).
+   - so repeat plays load instantly from the browser cache (no download, no network check):
+     after `var buildUrl = "Build";` add `var buildVersion = "1";`,
+     add `+ "?v=" + buildVersion` to the end of `dataUrl`, `frameworkUrl` and `codeUrl`,
+     and after the `productVersion` line add `cacheControl: function () { return "immutable"; },`
+     (copy from any existing `games/*/index.html`). Keep `productVersion: "0.1.0"`: all games share one
+     browser cache, and opening a game with a different productVersion clears the other games' cached files.
+4. Put a 1024×500 feature graphic in `assets/img/games/` as **WebP** (from StoreListing/<Game>/feature-graphic-1024x500.png),
+   e.g. `cwebp -q 82 -m 6 feature-graphic-1024x500.png -o assets/img/games/<Game>.webp` (about 20 KB instead of ~600 KB).
 5. Add an entry at the top of `assets/js/games-data.js`.
 6. If you changed assets/css or assets/js, bump the `?v=` number on those links in index.html so browsers load the new version.
 7. Push.
 
 Link straight to a game from anywhere with `?play=<id>`, e.g. https://shanisagar.github.io/portfoliogames/?play=elixirlab
+
+## Update a game that is already live
+Replace its `games/<id>/Build/` files with the new build, then in `games/<id>/index.html` bump
+`buildVersion` (`"1"` → `"2"` …). Without the bump, returning players keep playing the old cached build.
+If you copy Unity's new index.html over the old one, redo the step 3 edits and set `buildVersion` higher than before.
 
 ## Web ads (browser builds only)
 Android APKs use AdMob from Unity as before. Browser builds use the provider set in

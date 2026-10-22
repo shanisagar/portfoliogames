@@ -55,16 +55,18 @@
       }
 
       var buildUrl = "Build";
+      var buildVersion = "1"; // bump when you push a new build of this game, so players get it
       var loaderUrl = buildUrl + "/SudokuZen.loader.js";
       var config = {
         arguments: [],
-        dataUrl: buildUrl + "/SudokuZen.data.unityweb",
-        frameworkUrl: buildUrl + "/SudokuZen.framework.js.unityweb",
-        codeUrl: buildUrl + "/SudokuZen.wasm.unityweb",
+        dataUrl: buildUrl + "/SudokuZen.data.unityweb" + "?v=" + buildVersion,
+        frameworkUrl: buildUrl + "/SudokuZen.framework.js.unityweb" + "?v=" + buildVersion,
+        codeUrl: buildUrl + "/SudokuZen.wasm.unityweb" + "?v=" + buildVersion,
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "Sudoku Zen",
         productVersion: "0.1.0",
+        cacheControl: function () { return "immutable"; }, // repeat plays load from the browser cache with no network check
         showBanner: unityShowBanner,
         // errorHandler: function(err, url, line) {
         //    alert("error " + err + " occurred at line " + line);

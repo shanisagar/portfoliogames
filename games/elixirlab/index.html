@@ -55,16 +55,18 @@
       }
 
       var buildUrl = "Build";
+      var buildVersion = "1"; // bump when you push a new build of this game, so players get it
       var loaderUrl = buildUrl + "/ElixirLab.loader.js";
       var config = {
         arguments: [],
-        dataUrl: buildUrl + "/ElixirLab.data.unityweb",
-        frameworkUrl: buildUrl + "/ElixirLab.framework.js.unityweb",
-        codeUrl: buildUrl + "/ElixirLab.wasm.unityweb",
+        dataUrl: buildUrl + "/ElixirLab.data.unityweb" + "?v=" + buildVersion,
+        frameworkUrl: buildUrl + "/ElixirLab.framework.js.unityweb" + "?v=" + buildVersion,
+        codeUrl: buildUrl + "/ElixirLab.wasm.unityweb" + "?v=" + buildVersion,
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "Elixir Lab",
         productVersion: "0.1.0",
+        cacheControl: function () { return "immutable"; }, // repeat plays load from the browser cache with no network check
         showBanner: unityShowBanner,
         // errorHandler: function(err, url, line) {
         //    alert("error " + err + " occurred at line " + line);
