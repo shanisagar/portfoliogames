@@ -19,7 +19,7 @@
     <div class="col-lg-4 col-md-6 portfolio-item"${aos}>
       <article class="project" id="game-${esc(g.id)}">
         <div class="project-img">
-          <img src="${esc(g.image)}" alt="${esc(g.name)} feature graphic" loading="lazy">
+          <img src="${esc(g.image)}" alt="${esc(g.name)} feature graphic" width="1024" height="500" loading="${i < 3 ? "eager" : "lazy"}" decoding="async">
           ${badge ? `<span class="game-badge game-badge-${esc(badge.kind)}">${esc(badge.text)}</span>` : ""}
           <div class="project-actions">
             <a href="${esc(g.image)}" data-gallery="games" class="portfolio-lightbox" title="${esc(g.name)} — ${esc(g.tagline)}" aria-label="Enlarge"><i class="bx bx-expand"></i></a>
@@ -73,9 +73,18 @@
         mode === "foryou" ? (result.hasHistory ? "Sorted by what you play most" : "Play a game and this list learns what you like") : "";
       sortBar.querySelector(".games-sort-reset").hidden = !result.hasHistory;
     }
-    if (!firstRender && window.GLightbox) GLightbox({ selector: ".portfolio-lightbox" });
+    initLightbox();
     firstRender = false;
   }
+
+  // One lightbox instance, refreshed after each re-render instead of stacking new ones.
+  let lightbox = null;
+  function initLightbox() {
+    if (!window.GLightbox) return;
+    if (lightbox) lightbox.reload();
+    else lightbox = GLightbox({ selector: ".portfolio-lightbox" });
+  }
+
   render();
 
   const countEl = $("#game-count");
@@ -83,18 +92,24 @@
 
   /* ---------- Header, mobile nav, back-to-top, year ---------- */
   const header = $("#header"), backtotop = $(".back-to-top"), navToggle = $(".mobile-nav-toggle");
+  let scrollQueued = false;
   const onScroll = () => {
-    header.classList.toggle("scrolled", window.scrollY > 20);
-    backtotop.classList.toggle("active", window.scrollY > 300);
+    if (scrollQueued) return;
+    scrollQueued = true;
+    requestAnimationFrame(() => { // at most one class update per frame
+      scrollQueued = false;
+      header.classList.toggle("scrolled", window.scrollY > 20);
+      backtotop.classList.toggle("active", window.scrollY > 300);
+    });
   };
-  window.addEventListener("load", onScroll);
+  onScroll();
   document.addEventListener("scroll", onScroll, { passive: true });
 
   const setMobileNav = (open) => {
     document.body.classList.toggle("mobile-nav-active", open);
     const icon = navToggle.querySelector("i");
-    icon.classList.toggle("bi-list", !open);
-    icon.classList.toggle("bi-x", open);
+    icon.classList.toggle("bx-menu", !open);
+    icon.classList.toggle("bx-x", open);
   };
   navToggle.addEventListener("click", () => setMobileNav(!document.body.classList.contains("mobile-nav-active")));
   $("#navbar a", true).forEach((a) => a.addEventListener("click", () => setMobileNav(false)));
@@ -102,7 +117,6 @@
   const yearEl = $("#year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  if (window.GLightbox) GLightbox({ selector: ".portfolio-lightbox" });
   window.addEventListener("load", () => {
     if (window.AOS) AOS.init({ duration: 800, easing: "ease-out-cubic", once: true, offset: 60 });
   });

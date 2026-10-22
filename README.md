@@ -13,7 +13,8 @@ Unity games playable in the browser. Live at https://shanisagar.github.io/portfo
      `<script src="../../assets/js/web-ads.js?v=1"></script>`
    - and also add:
      `<style>html,body{height:100%;background:#0b0d17;overflow:hidden}@media (min-aspect-ratio: 9/16){#unity-container.unity-mobile{height:100%;width:auto;aspect-ratio:9/16;left:50%;transform:translateX(-50%)}}</style>`
-4. Put a 1024×500 feature graphic in `assets/img/games/` (StoreListing/<Game>/feature-graphic-1024x500.png).
+4. Put a 1024×500 feature graphic in `assets/img/games/` as **WebP** (from StoreListing/<Game>/feature-graphic-1024x500.png),
+   e.g. `cwebp -q 82 -m 6 feature-graphic-1024x500.png -o assets/img/games/<Game>.webp` (about 20 KB instead of ~600 KB).
 5. Add an entry at the top of `assets/js/games-data.js`.
 6. If you changed assets/css or assets/js, bump the `?v=` number on those links in index.html so browsers load the new version.
 7. Push.
