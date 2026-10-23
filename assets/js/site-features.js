@@ -7,5 +7,5 @@
  *                     the game counter and ?play= links.
  */
 window.SITE_FEATURES = {
-  gameLimit: { enabled: false, count: 10 }
+  gameLimit: { enabled: true, count: 10 }
 };
