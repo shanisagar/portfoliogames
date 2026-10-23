@@ -2,14 +2,9 @@
   "use strict";
 
   const $ = (sel, all = false) => all ? [...document.querySelectorAll(sel)] : document.querySelector(sel);
-  const allGames = Array.isArray(window.GAMES) ? window.GAMES : [];
-  // Feature flag (assets/js/site-features.js): optionally show only the first N games.
-  const limit = (window.SITE_FEATURES || {}).gameLimit || {};
-  const pinned = limit.enabled && Array.isArray(limit.first) ? limit.first : [];
-  const pinnedGames = pinned.map((id) => allGames.find((g) => g.id === id)).filter(Boolean);
-  const ordered = pinnedGames.concat(allGames.filter((g) => pinnedGames.indexOf(g) < 0));
-  const games = limit.enabled && limit.count > 0 ? ordered.slice(0, limit.count) : allGames;
-  const pinFirst = (list) => pinnedGames.filter((g) => games.indexOf(g) >= 0).concat(list.filter((g) => pinnedGames.indexOf(g) < 0));
+  const games = Array.isArray(window.GAMES) ? window.GAMES : [];
+  // Games marked pinned (set by site-tools/apply_features.py) stay on top whatever the sort.
+  const pinFirst = (list) => list.filter((g) => g.pinned).concat(list.filter((g) => !g.pinned));
 
   /* ---------- Render the game cards ---------- */
   const grid = $("#games-grid");
