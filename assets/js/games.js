@@ -2,7 +2,10 @@
   "use strict";
 
   const $ = (sel, all = false) => all ? [...document.querySelectorAll(sel)] : document.querySelector(sel);
-  const games = Array.isArray(window.GAMES) ? window.GAMES : [];
+  const allGames = Array.isArray(window.GAMES) ? window.GAMES : [];
+  // Feature flag (assets/js/site-features.js): optionally show only the first N games.
+  const limit = (window.SITE_FEATURES || {}).gameLimit || {};
+  const games = limit.enabled && limit.count > 0 ? allGames.slice(0, limit.count) : allGames;
 
   /* ---------- Render the game cards ---------- */
   const grid = $("#games-grid");
