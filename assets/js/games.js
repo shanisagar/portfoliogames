@@ -5,7 +5,11 @@
   const allGames = Array.isArray(window.GAMES) ? window.GAMES : [];
   // Feature flag (assets/js/site-features.js): optionally show only the first N games.
   const limit = (window.SITE_FEATURES || {}).gameLimit || {};
-  const games = limit.enabled && limit.count > 0 ? allGames.slice(0, limit.count) : allGames;
+  const pinned = limit.enabled && Array.isArray(limit.first) ? limit.first : [];
+  const pinnedGames = pinned.map((id) => allGames.find((g) => g.id === id)).filter(Boolean);
+  const ordered = pinnedGames.concat(allGames.filter((g) => pinnedGames.indexOf(g) < 0));
+  const games = limit.enabled && limit.count > 0 ? ordered.slice(0, limit.count) : allGames;
+  const pinFirst = (list) => pinnedGames.filter((g) => games.indexOf(g) >= 0).concat(list.filter((g) => pinnedGames.indexOf(g) < 0));
 
   /* ---------- Render the game cards ---------- */
   const grid = $("#games-grid");
@@ -22,7 +26,7 @@
     <div class="col-lg-4 col-md-6 portfolio-item"${aos}>
       <article class="project" id="game-${esc(g.id)}">
         <div class="project-img">
-          <img src="${esc(g.image)}" alt="${esc(g.name)} feature graphic" width="1024" height="500" loading="${i < 3 ? "eager" : "lazy"}" decoding="async">
+          <img src="${esc(g.image)}" alt="${esc(g.name)} feature graphic" loading="lazy">
           ${badge ? `<span class="game-badge game-badge-${esc(badge.kind)}">${esc(badge.text)}</span>` : ""}
           <div class="project-actions">
             <a href="${esc(g.image)}" data-gallery="games" class="portfolio-lightbox" title="${esc(g.name)} — ${esc(g.tagline)}" aria-label="Enlarge"><i class="bx bx-expand"></i></a>
@@ -69,6 +73,7 @@
   function render() {
     const mode = rank ? rank.getMode() : "newest";
     const result = rank ? rank.order(games, mode) : { list: games, badges: {}, hasHistory: false };
+    result.list = pinFirst(result.list); // pinned games stay on top whatever the sort
     grid.innerHTML = result.list.map((g, i) => cardHtml(g, i, result.badges[g.id])).join("");
     if (sortBar) {
       sortBar.querySelectorAll("[data-sort]").forEach((b) => b.classList.toggle("active", b.dataset.sort === mode));
@@ -76,18 +81,9 @@
         mode === "foryou" ? (result.hasHistory ? "Sorted by what you play most" : "Play a game and this list learns what you like") : "";
       sortBar.querySelector(".games-sort-reset").hidden = !result.hasHistory;
     }
-    initLightbox();
+    if (!firstRender && window.GLightbox) GLightbox({ selector: ".portfolio-lightbox" });
     firstRender = false;
   }
-
-  // One lightbox instance, refreshed after each re-render instead of stacking new ones.
-  let lightbox = null;
-  function initLightbox() {
-    if (!window.GLightbox) return;
-    if (lightbox) lightbox.reload();
-    else lightbox = GLightbox({ selector: ".portfolio-lightbox" });
-  }
-
   render();
 
   const countEl = $("#game-count");
@@ -95,24 +91,18 @@
 
   /* ---------- Header, mobile nav, back-to-top, year ---------- */
   const header = $("#header"), backtotop = $(".back-to-top"), navToggle = $(".mobile-nav-toggle");
-  let scrollQueued = false;
   const onScroll = () => {
-    if (scrollQueued) return;
-    scrollQueued = true;
-    requestAnimationFrame(() => { // at most one class update per frame
-      scrollQueued = false;
-      header.classList.toggle("scrolled", window.scrollY > 20);
-      backtotop.classList.toggle("active", window.scrollY > 300);
-    });
+    header.classList.toggle("scrolled", window.scrollY > 20);
+    backtotop.classList.toggle("active", window.scrollY > 300);
   };
-  onScroll();
+  window.addEventListener("load", onScroll);
   document.addEventListener("scroll", onScroll, { passive: true });
 
   const setMobileNav = (open) => {
     document.body.classList.toggle("mobile-nav-active", open);
     const icon = navToggle.querySelector("i");
-    icon.classList.toggle("bx-menu", !open);
-    icon.classList.toggle("bx-x", open);
+    icon.classList.toggle("bi-list", !open);
+    icon.classList.toggle("bi-x", open);
   };
   navToggle.addEventListener("click", () => setMobileNav(!document.body.classList.contains("mobile-nav-active")));
   $("#navbar a", true).forEach((a) => a.addEventListener("click", () => setMobileNav(false)));
@@ -120,6 +110,7 @@
   const yearEl = $("#year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+  if (window.GLightbox) GLightbox({ selector: ".portfolio-lightbox" });
   window.addEventListener("load", () => {
     if (window.AOS) AOS.init({ duration: 800, easing: "ease-out-cubic", once: true, offset: 60 });
   });
@@ -127,15 +118,10 @@
   /* ---------- Game pop-up ---------- */
   const modal = $("#game-modal"), frame = $("#game-modal-frame"), title = $("#game-modal-title");
   let lastFocus = null;
-  let playedHere = false;
 
   function openGame(id) {
     const g = games.find((x) => x.id === id);
     if (!g) return;
-    // A closed Unity game doesn't hand all its memory back until the page itself is unloaded, and after a
-    // few games in one tab the next one could crash with "OOM". So the 2nd+ game reloads the page into it.
-    if (playedHere) { location.replace("?play=" + encodeURIComponent(g.id)); return; }
-    playedHere = true;
     lastFocus = document.activeElement;
     title.textContent = g.name;
     frame.title = g.name;
