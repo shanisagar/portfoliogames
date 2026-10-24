@@ -62,5 +62,60 @@ window.GAMES = [
       "One-tap tower stacker: a crane slides each new floor back and forth and you tap to drop it. Whatever hangs over the edge is sliced off and tumbles away, so the tower narrows unless you land perfect drops, and three perfects in a row widen it again. The sky changes as you climb from the city through the clouds and the sunset into space, and the crane speeds up the higher you build.",
     tags: ["Unity", "C#", "One-Tap", "Timing"],
     apk: null
+  },
+  {
+    id: "fruitfusion",
+    name: "Fruit Fusion",
+    tagline: "Drop. Merge. Grow a watermelon!",
+    image: "assets/img/games/FruitFusion.webp",
+    genre: "Puzzle",
+    description:
+      "Suika-style drop-and-merge puzzle: drop fruit into a glass jar and two of the same fruit merge into the next, bigger one, all the way from a cherry up to a watermelon. Fruit rolls, stacks and tumbles with custom circle physics, quick merges chain into combos, and POP and SHAKE boosters rescue a crowded jar. Eleven cute fruits, the jar and the kitchen are drawn entirely in code.",
+    tags: ["Unity", "C#", "Merge Puzzle", "Circle Physics"],
+    apk: null
+  },
+  {
+    id: "melodytiles",
+    name: "Melody Tiles",
+    tagline: "Tap the tiles. Play the song.",
+    image: "assets/img/games/MelodyTiles.webp",
+    genre: "Rhythm",
+    description:
+      "Piano-tiles rhythm game: tap the falling black tiles in order and each one plays the next note of a famous public-domain melody, from Ode to Joy and Für Elise to the Hall of the Mountain King. Long tiles must be held, stars at every third of the song unlock new songs, and finished songs loop faster in Encore mode. Multi-touch input and a piano synthesized in code.",
+    tags: ["Unity", "C#", "Rhythm", "Synthesized Piano"],
+    apk: null
+  },
+  {
+    id: "tilegarden",
+    name: "Tile Garden",
+    tagline: "Match three. Clear the garden.",
+    image: "assets/img/games/TileGarden.webp",
+    genre: "Puzzle",
+    description:
+      "Relaxing triple-tile matching: tiles are stacked in layers and only uncovered ones can be picked. Tapped tiles slide into a seven-slot tray and three of a kind clear away; fill the tray and the level is lost. Symmetric layered gardens grow with every level, with Undo, Magic and Shuffle boosters, star times and soft falling blossom.",
+    tags: ["Unity", "C#", "Triple Match", "Layered Boards"],
+    apk: null
+  },
+  {
+    id: "boltjam",
+    name: "Bolt Jam",
+    tagline: "Unscrew. Sort. Drop every plank.",
+    image: "assets/img/games/BoltJam.webp",
+    genre: "Puzzle",
+    description:
+      "Screw-sorting puzzle on a workshop pegboard: wooden planks are screwed down in overlapping layers and a screw only comes out once no plank above covers it. Each screw flies to the paint tin of its colour, three per tin, or waits in a small holding tray. Planks held by one screw swing like pendulums and fall when the last one is gone; drop them all to win.",
+    tags: ["Unity", "C#", "Screw Puzzle", "Pendulum Physics"],
+    apk: null
+  },
+  {
+    id: "bladetoss",
+    name: "Blade Toss",
+    tagline: "Throw. Stick. Don't hit a blade.",
+    image: "assets/img/games/BladeToss.webp",
+    genre: "Arcade",
+    description:
+      "Knife-throwing arcade game: tap to throw a knife into the spinning target and never touch a blade that is already stuck in it. Throw every knife to smash the target; spin patterns wobble, reverse and stop-and-go, and every fifth stage is a boss such as a cheese wheel, an old tire or a knight's shield. Slice apples on the rim for coins and unlock six knife skins.",
+    tags: ["Unity", "C#", "Timing", "Boss Patterns"],
+    apk: null
   }
 ];
