@@ -20,7 +20,39 @@ window.GAMES = [
     apkSize: "40 MB"
   },
   {
-    pinned: true,
+    id: "swarmbreaker",
+    name: "Swarmbreaker",
+    tagline: "Outfight a hive mind that learns you.",
+    image: "assets/img/games/Swarmbreaker.webp",
+    genre: "Shooter",
+    description:
+      "Twin-stick arena shooter against an adaptive hive mind. Drones flock and encircle you, flankers circle behind your aim and lunge, snipers lead their shots and wardens shield their allies, and every fifth wave a Hive core arrives. Between waves you pick an upgrade, and the hive picks a counter to how you played.",
+    tags: ["Unity", "C#", "Twin-Stick", "Adaptive AI"],
+    apk: null
+  },
+  {
+    id: "firewall",
+    name: "Firewall",
+    tagline: "Defend the core from a virus that learns.",
+    image: "assets/img/games/Firewall.webp",
+    genre: "Strategy",
+    description:
+      "Tower defense against a learning virus hive: build Blaster, Pulse, Cryo and Rail towers to shape the maze and protect your data core. Viruses route with a weighted flow field, record where they take damage and reroute around your kill zones, and the hive brings viruses that resist whichever towers hurt it most. Endless waves with bigger bosses.",
+    tags: ["Unity", "C#", "Tower Defense", "Flow-Field AI"],
+    apk: null
+  },
+  {
+    id: "bubblebloom",
+    name: "Bubble Bloom",
+    tagline: "Pop bubbles. Free the flowers.",
+    image: "assets/img/games/BubbleBloom.webp",
+    genre: "Puzzle",
+    description:
+      "Level-based bubble shooter in a sunny garden: drag to aim with a dotted line that shows every wall bounce, then let go to shoot. Three or more of a colour pop, and bubbles left hanging drop for bonus points. Each level hides flower buds near the top that you must free before your shots run out, with bomb and rainbow boosters, colour-blind-friendly symbols on every bubble and three-star ratings.",
+    tags: ["Unity", "C#", "Bubble Shooter", "Hex Grid"],
+    apk: null
+  },
+  {
     id: "skystack",
     name: "Sky Stack",
     tagline: "Stack the floors. Touch the stars.",
@@ -32,7 +64,6 @@ window.GAMES = [
     apk: null
   },
   {
-    pinned: true,
     id: "fruitfusion",
     name: "Fruit Fusion",
     tagline: "Drop. Merge. Grow a watermelon!",
@@ -44,7 +75,6 @@ window.GAMES = [
     apk: null
   },
   {
-    pinned: true,
     id: "melodytiles",
     name: "Melody Tiles",
     tagline: "Tap the tiles. Play the song.",
@@ -53,6 +83,39 @@ window.GAMES = [
     description:
       "Piano-tiles rhythm game: tap the falling black tiles in order and each one plays the next note of a famous public-domain melody, from Ode to Joy and Für Elise to the Hall of the Mountain King. Long tiles must be held, stars at every third of the song unlock new songs, and finished songs loop faster in Encore mode. Multi-touch input and a piano synthesized in code.",
     tags: ["Unity", "C#", "Rhythm", "Synthesized Piano"],
+    apk: null
+  },
+  {
+    id: "tilegarden",
+    name: "Tile Garden",
+    tagline: "Match three. Clear the garden.",
+    image: "assets/img/games/TileGarden.webp",
+    genre: "Puzzle",
+    description:
+      "Relaxing triple-tile matching: tiles are stacked in layers and only uncovered ones can be picked. Tapped tiles slide into a seven-slot tray and three of a kind clear away; fill the tray and the level is lost. Symmetric layered gardens grow with every level, with Undo, Magic and Shuffle boosters, star times and soft falling blossom.",
+    tags: ["Unity", "C#", "Triple Match", "Layered Boards"],
+    apk: null
+  },
+  {
+    id: "boltjam",
+    name: "Bolt Jam",
+    tagline: "Unscrew. Sort. Drop every plank.",
+    image: "assets/img/games/BoltJam.webp",
+    genre: "Puzzle",
+    description:
+      "Screw-sorting puzzle on a workshop pegboard: wooden planks are screwed down in overlapping layers and a screw only comes out once no plank above covers it. Each screw flies to the paint tin of its colour, three per tin, or waits in a small holding tray. Planks held by one screw swing like pendulums and fall when the last one is gone; drop them all to win.",
+    tags: ["Unity", "C#", "Screw Puzzle", "Pendulum Physics"],
+    apk: null
+  },
+  {
+    id: "bladetoss",
+    name: "Blade Toss",
+    tagline: "Throw. Stick. Don't hit a blade.",
+    image: "assets/img/games/BladeToss.webp",
+    genre: "Arcade",
+    description:
+      "Knife-throwing arcade game: tap to throw a knife into the spinning target and never touch a blade that is already stuck in it. Throw every knife to smash the target; spin patterns wobble, reverse and stop-and-go, and every fifth stage is a boss such as a cheese wheel, an old tire or a knight's shield. Slice apples on the rim for coins and unlock six knife skins.",
+    tags: ["Unity", "C#", "Timing", "Boss Patterns"],
     apk: null
   }
 ];
