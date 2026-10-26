@@ -20,6 +20,17 @@ window.GAMES = [
     apkSize: "40 MB"
   },
   {
+    id: "cometcascade",
+    name: "Comet Cascade",
+    tagline: "Drop. Bounce. Multiply.",
+    image: "assets/img/games/CometCascade.webp",
+    genre: "Arcade",
+    description:
+      "Space-themed drop game: launch comets through a triangle of star pegs and land them in the orbit pods at the bottom, which multiply your stardust. Choose Calm, Nebula or Supernova risk and 8 to 16 rows, and the pod table for each is built from the binomial odds to a 97% average return. Each comet's pod is drawn first with a crypto RNG, then shown as ballistic hops that never clip a peg. Includes auto-launch, multi-comet play, a ranking ladder with bonus rewards and a synthesized pentatonic soundtrack.",
+    tags: ["HTML5 Canvas", "JavaScript", "Probability", "Web Audio"],
+    apk: null
+  },
+  {
     id: "swarmbreaker",
     name: "Swarmbreaker",
     tagline: "Outfight a hive mind that learns you.",
