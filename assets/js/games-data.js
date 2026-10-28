@@ -20,6 +20,17 @@ window.GAMES = [
     apkSize: "40 MB"
   },
   {
+    id: "hotseat",
+    name: "Hot Seat Quiz",
+    tagline: "15 questions to the top of the ladder!",
+    image: "assets/img/games/HotSeatQuiz.webp",
+    genre: "Quiz",
+    description:
+      "Take the hot seat in a glowing TV-studio quiz: pick an answer, lock it in and sweat through the suspense as you climb a 15-step points ladder with safe havens at 5 and 10. Use 50:50, the audience poll, an expert or a swap, walk away any time, play the same daily quiz as everyone else, or race an easy/medium/hard quiz bot or a friend on one device. Hundreds of original questions on India and the world.",
+    tags: ["TypeScript", "Phaser", "HTML5 Canvas", "Quiz"],
+    apk: null
+  },
+  {
     id: "cometcascade",
     name: "Comet Cascade",
     tagline: "Drop. Bounce. Multiply.",
