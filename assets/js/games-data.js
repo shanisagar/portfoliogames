@@ -30,6 +30,9 @@ window.GAMES = [
     tags: ["TypeScript", "Phaser", "HTML5 Canvas", "Quiz"],
     apk: null
   },
+  // DISABLED (hidden from the list; files kept in games/cometcascade/ and the image in assets/img/games/).
+  // To show it again, remove the /* and */ around this entry and bump the games-data.js ?v= number in index.html.
+  /*
   {
     id: "cometcascade",
     name: "Comet Cascade",
@@ -41,6 +44,7 @@ window.GAMES = [
     tags: ["HTML5 Canvas", "JavaScript", "Probability", "Web Audio"],
     apk: null
   },
+  */
   {
     id: "swarmbreaker",
     name: "Swarmbreaker",
